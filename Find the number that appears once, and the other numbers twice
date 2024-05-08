@@ -1,0 +1,30 @@
+arr = [1,1,2,3,3,4,4]
+
+def findones(arr):
+    n = len(arr)
+    maxi = max(arr)
+    
+    hashing = [0]*(maxi+1)
+    for num in arr:
+        hashing[num] +=1
+        
+    for num in arr:
+        if hashing[num]==1:
+            return num
+            
+            
+print(findones(arr))
+
+
+arr = [1,1,2,2,3,3,4,4,5]
+
+dict = {}
+
+for i in arr:
+    if i in dict:
+        dict[i]+=1
+    else:
+        dict[i] = 1
+for num,count in dict.items():
+    if count ==1:
+        print(num)
