@@ -17,3 +17,32 @@ arr = [ 10, 5, 2, 7, 1, 9 ]
 n = len(arr)
 k = 15
 print(lenoflongersubarray(arr,n,k))
+
+
+
+optimal 
+
+
+def lenoflongestsubarray(arr,n,k):
+    Dict = {0:-1}
+    maxlen = 0
+    prefix_sum = 0
+    
+    for i in range(n):
+        prefix_sum += arr[i]
+        
+        
+        if prefix_sum - k in Dict:
+            length = i - Dict[prefix_sum - k]
+            maxlen = max(maxlen,length)
+            
+        if prefix_sum not in Dict:
+            Dict[prefix_sum] = i
+            
+    return maxlen
+    
+    
+arr = [10, 5, 0,0,0,0,2, 7, 1, 9]
+n = len(arr)
+k = 15
+print("Length = " + str(lenoflongestsubarray(arr, n, k)))
