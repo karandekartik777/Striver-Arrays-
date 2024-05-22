@@ -1,0 +1,52 @@
+Brute force 
+def printLeadersBruteForce(arr, n):
+    ans = []
+  
+    for i in range(n):
+        leader = True
+
+        # Checking whether arr[i] is greater than all 
+        # the elements in its right side
+        for j in range(i+1, n):
+            if arr[j] > arr[i]:
+                # If any element found is greater than current leader,
+                # curr element is not the leader.
+                leader = False
+                break
+
+        # Push all the leaders in ans array.
+        if leader:
+            ans.append(arr[i])
+
+    return ans
+
+# Main function
+if __name__ == '__main__':
+    # Array Initialization
+    n = 6
+    arr = [10, 22, 12, 3, 0, 6]
+
+    ans = printLeadersBruteForce(arr, n)
+
+    for i in range(len(ans)):
+        print(ans[i], end=" ")
+
+    print()
+
+***********************************************************************************************************************************************
+Optimal Solution 
+
+def printleader(arr):
+    ans = []
+    maxelement = arr[len(arr)-1]
+    ans.append(maxelement)
+    
+    for i in range(len(arr)-1 , -1,-1):
+        if arr[i]>maxelement:
+            ans.append(arr[i])
+            maxelement = arr[i]
+    return ans
+    
+    
+arr = [10, 22, 12, 3, 0, 6]
+print(printleader(arr))
